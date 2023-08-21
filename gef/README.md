@@ -1,7 +1,7 @@
-# GDB
+# GDB GEF
 
-*all files saved in* `/tools/`
-
+install gef and gef-extra
 ```
-./gdb_setting.sh
+# install
+./gef_setting.sh
 ```
