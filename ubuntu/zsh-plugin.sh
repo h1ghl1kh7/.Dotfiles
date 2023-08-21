@@ -21,5 +21,6 @@ cd $installer_path
 cp .p10k.zsh ~/
 mkdir -p ~/.config/nvim/
 cp .vimrc ~/.config/nvim/init.vim
-cp .vimrc ~/.vimrc
+cp .vimrc ~/
 cp .zshrc ~/
+cp .tmux.conf ~/
