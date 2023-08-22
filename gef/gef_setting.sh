@@ -24,6 +24,9 @@ echo "[+] Download Gef & Gef-extra"
 wget -O ~/.gef.py -q https://gef.blah.cat/py
 git clone https://github.com/hugsy/gef-extras ~/.gef-extras
 
+echo "[+] Download Pwngdb"
+git clone https://github.com/scwuaptx/Pwngdb.git ~/.Pwngdb
+
 cd $installer_path
 
 echo "[+] Setting .gdbinit & .gef.rc"
