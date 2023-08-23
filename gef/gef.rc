@@ -105,7 +105,7 @@ max_size_preview = 10
 nr_pages_chunk = 1024
 
 [syscall-args]
-path = /tools/syscall-tables
+path = ~/.gef-extras/syscall_args/syscall-tables
 
 [theme]
 address_code = red

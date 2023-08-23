@@ -1,4 +1,5 @@
 source ~/.gef.py
+source ~/.Pwngdb/pwngdb.py
 source ~/.Pwngdb/angelheap/gdbinit.py
 
 define hook-run
