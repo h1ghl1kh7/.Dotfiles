@@ -1,16 +1,9 @@
-[assemble]
-default_architecture = X86
-default_mode = 64
-
-[capstone-disassemble]
-use-capstone = False
-
 [context]
 clear_screen = True
 enable = True
 grow_stack_down = False
 ignore_registers = 
-layout = legend regs stack code args source memory threads trace extra libc_function_args syscall_args libc_function_args syscall_args
+layout = legend regs stack code args source memory threads trace extra
 libc_args = True
 libc_args_path = ~/.gef-extras/glibc-function-args
 nb_lines_backtrace = 10
@@ -33,22 +26,19 @@ max_recursion = 7
 [entry-break]
 entrypoint_symbols = main _main __libc_start_main __uClibc_main start _start
 
-[ftrace]
-output = /dev/stderr
-
 [gef]
+pcustom.struct_path = ~/.gef-extras/structs
 autosave_breakpoints_file = 
 bruteforce_main_arena = False
 buffer = True
 debug = False
 disable_color = False
-extra_plugins_dir = ~/.gef-extras/scripts
+extra_plugins_dir = 
 follow_child = True
 main_arena_offset = 
 readline_compat = False
 show_deprecation_warnings = True
 tempdir = /tmp/gef
-use-windbg-prompt = False
 
 [got]
 function_not_resolved = yellow
@@ -70,11 +60,6 @@ always_show_ascii = False
 [highlight]
 regex = False
 
-[ida-rpyc]
-host = 127.0.0.1
-port = 18812
-sync_cursor = False
-
 [pattern]
 length = 1024
 
@@ -91,21 +76,9 @@ max_size_preview = 10
 [process-search]
 ps_command = /usr/bin/ps auxww
 
-[retdec]
-path = /tmp/gef
-retdec_path = 
-theme = default
-
-[rpyc-remote]
-host = 0.0.0.0
-port = 12345
-
 [search-pattern]
 max_size_preview = 10
 nr_pages_chunk = 1024
-
-[syscall-args]
-path = ~/.gef-extras/syscall_args/syscall-tables
 
 [theme]
 address_code = red
@@ -130,12 +103,8 @@ table_heading = blue
 max_tracing_recursion = 1
 tracefile_prefix = ./gef-trace-
 
-[unicorn-emulate]
-show_disassembly = False
-verbose = False
-
-[vereference]
-max_recursion = 7
+[syscall-args]
+path = ~/.gef-extras/syscall_args/syscall-tables
 
 [aliases]
 ctx = context
@@ -165,42 +134,4 @@ xref = search-pattern
 sc-get = shellcode get
 sc-search = shellcode search
 screen-setup = tmux-setup
-da = display/s
-dt = pcustom
-dq = hexdump qword
-dd = hexdump dword
-dw = hexdump word
-db = hexdump byte
-eq = patch qword
-ed = patch dword
-ew = patch word
-eb = patch byte
-ea = patch string
-dps = dereference
-bp = break
-bl = info breakpoints
-bd = disable breakpoints
-bc = delete breakpoints
-be = enable breakpoints
-tbp = tbreak
-s = grep
-pa = advance
-t = stepi
-p = nexti
-kp = info stack
-uf = disassemble
-asm = assemble
-cs-dis = capstone-disassemble
-stack-view = current-stack-frame
-perror = error
-skeleton = exploit-template
-decompile = retdec
-mprotect = set-permission
-emulate = unicorn-emulate
-v8 = vereference
-heap-view = visualize-libc-heap-chunks
-ida-rpyc bp = ida-rpyc breakpoints
-ida-rpyc bl = ida-rpyc breakpoints list
-ida-rpyc cmt = ida-rpyc comments
-ida-rpyc hl = ida-rpyc highlight
-ida-rpyc goto = ida-rpyc jump
+
