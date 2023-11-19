@@ -1,6 +1,5 @@
 set nocompatible              " be iMproved, required
 filetype plugin indent on     
-
 " Disable annoying beeping
 set belloff=all
 
@@ -14,7 +13,6 @@ set ignorecase
 set cursorcolumn
 
 set clipboard=unnamed
-set mouse=a
 
 
 "--------------------------------------------Plugin 시작
@@ -26,20 +24,25 @@ Plug 'blueyed/vim-diminactive' "화면 분할 시 background color 변경
 Plug 'koron/nyancat-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree' 
-Plug 'preservim/tagbar'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 " coc plugin
 Plug 'haya14busa/vim-asterisk'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'nvie/vim-flake8' " python 문법 검사
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-Plug 'joe-skb7/cscope-maps'
-Plug 'voldikss/vim-floaterm'
+
+Plug 'ronakg/quickr-cscope.vim'
+
+Plug 'tribela/vim-transparent'
+
 
 
 call plug#end()
@@ -57,6 +60,7 @@ let mapleader=","
 set number relativenumber
 set nu rnu
 
+
 syntax on           "구문 강조
 set t_Co=256        "구문강조 색 변경
 set encoding=utf-8
@@ -70,6 +74,7 @@ set wildmenu
 
 " set showcmd
 set showcmd
+
 "-------------------------------------------- vim 기본 설정 끝
 
 
@@ -81,18 +86,12 @@ set showcmd
 " open rc
 nmap <Leader>rc :rightbelow vnew $MYVIMRC<CR>
 
-
-
 " nerdtre setting
 nmap <C-F> :NERDTreeFind<CR>
 nmap <Leader>nerd :NERDTreeToggle<CR>
 
-nnoremap   <silent>   <C-O>   :FloatermToggle<CR>
-tnoremap   <silent>   <C-O>   <C-\><C-n>:FloatermToggle<CR>
-
-" open fzf
-nmap <C-P> :Files<CR>
-
+" fzf setting
+nmap <C-P> :FZF<CR>
 
  " ultisnips
  "
@@ -103,17 +102,3 @@ let g:UltiSnipsJumpBackwardTrigger="<Left>"
 
 
 inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>"
-
-
-function! LoadCscope()
-  let db = findfile("cscope.out", ".;")
-  if (!empty(db))
-    let path = strpart(db, 0, match(db, "/cscope.out$"))
-    set nocscopeverbose " suppress 'duplicate connection' error
-    exe "cs add " . db . " " . path
-    set cscopeverbose
-  endif
-endfunction
-au BufEnter /* call LoadCscope()
-" set asterick
-map *   <Plug>(asterisk-*)
