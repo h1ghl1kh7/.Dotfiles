@@ -42,6 +42,8 @@ Plug 'joe-skb7/cscope-maps'
 Plug 'voldikss/vim-floaterm'
 
 
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
 call plug#end()
 
 "---------------------------------------------Plugin 종료
@@ -51,6 +53,9 @@ call plug#end()
 " color setting
 colorscheme dracula
 let g:dracula_colorterm = 0
+
+let g:floaterm_width= get(g:, 'floaterm_width', 0.8)
+let g:floaterm_height= get(g:, 'floaterm_height', 0.9)
 
 let mapleader=","
 " line number
@@ -89,6 +94,10 @@ nmap <Leader>nerd :NERDTreeToggle<CR>
 
 nnoremap   <silent>   <C-O>   :FloatermToggle<CR>
 tnoremap   <silent>   <C-O>   <C-\><C-n>:FloatermToggle<CR>
+
+vnoremap <S-Q> <Nop>
+nnoremap <S-Q> <Nop>
+
 
 " open fzf
 nmap <C-P> :Files<CR>
