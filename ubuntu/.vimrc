@@ -37,12 +37,16 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'nvie/vim-flake8' " python 문법 검사
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'puremourning/vimspector'
+
 
 Plug 'joe-skb7/cscope-maps'
 Plug 'voldikss/vim-floaterm'
 
 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -98,6 +102,12 @@ tnoremap   <silent>   <C-O>   <C-\><C-n>:FloatermToggle<CR>
 vnoremap <S-Q> <Nop>
 nnoremap <S-Q> <Nop>
 
+" coc setting
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>"
 
 " open fzf
 nmap <C-P> :Files<CR>
@@ -111,7 +121,6 @@ let g:UltiSnipsJumpForwardTrigger="<Right>"
 let g:UltiSnipsJumpBackwardTrigger="<Left>"
 
 
-inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>"
 
 
 function! LoadCscope()
