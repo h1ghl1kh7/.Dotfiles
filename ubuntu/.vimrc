@@ -17,6 +17,15 @@ set clipboard=unnamed
 set mouse=a
 
 
+set backspace=indent,eol,start
+
+" set python3 setting
+set pythondll=/usr/local/Frameworks/Python.framework/Versions/3.12/Python
+set pythonhome=/usr/local/Frameworks/Python.framework/Versions/3.12
+set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.12/Python
+set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/3.12
+
+
 "--------------------------------------------Plugin 시작
 
 call plug#begin()
@@ -49,11 +58,24 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 
+Plug 'SirVer/ultisnips'
+
+
+
 call plug#end()
 
 "---------------------------------------------Plugin 종료
 
 "--------------------------------------------- vim 기본 설정
+
+" ultisnips
+" let g:UltiSnipsExpandTrigger="<Tab>"
+" let g:UltiSnipsJumpForwardTrigger="<Tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips']
+let g:UltiSnipsSnippetDirectories = ['UltiSnips']
+
 
 " color setting
 colorscheme dracula
@@ -111,18 +133,27 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gD <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>"
+let g:UltiSnipsExpandTrigger = "<nop>"
 
+" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+
+
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+:
 " open fzf
 nmap <C-P> :Files<CR>
-
-
- " ultisnips
- "
- " " ultisnips
-let g:UltiSnipsExpandTrigger="<C-y>"
-let g:UltiSnipsJumpForwardTrigger="<Right>"
-let g:UltiSnipsJumpBackwardTrigger="<Left>"
 
 
 
