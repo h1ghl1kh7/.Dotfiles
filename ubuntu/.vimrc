@@ -16,6 +16,7 @@ set cursorcolumn
 set clipboard=unnamed
 set mouse=a
 
+set cmdheight=2
 
 set backspace=indent,eol,start
 
@@ -95,13 +96,9 @@ let g:UltiSnipsEditSplit="vertical"
 " let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips']
 let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 
-
-" color setting
 try
-	colorscheme dracula
-	let g:dracula_colorterm = 0
-finally
-	echo "no dracula"
+		colorscheme dracula
+		let g:dracula_colorterm = 0
 endtry
 
 let g:floaterm_width= get(g:, 'floaterm_width', 0.8)
