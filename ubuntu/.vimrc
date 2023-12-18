@@ -97,8 +97,9 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 
 try
-		colorscheme dracula
-		let g:dracula_colorterm = 0
+	colorscheme dracula
+catch /^Vim\%((\a\+)\)\=:E185/
+	" deal with it
 endtry
 
 let g:floaterm_width= get(g:, 'floaterm_width', 0.8)
