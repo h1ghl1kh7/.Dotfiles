@@ -20,11 +20,30 @@ set mouse=a
 set backspace=indent,eol,start
 
 " set python3 setting
-set pythondll=/usr/local/Frameworks/Python.framework/Versions/3.12/Python
-set pythonhome=/usr/local/Frameworks/Python.framework/Versions/3.12
-set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.12/Python
-set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/3.12
+set pythondll=/Library/Frameworks/Python.framework/Versions/3.12/Python
+set pythonhome=/Library/Frameworks/Python.framework/Versions/3.12
+set pythonthreedll=/Library/Frameworks/Python.framework/Versions/3.12/Python
+set pythonthreehome=/Library/Frameworks/Python.framework/Versions/3.12
 
+
+
+function! InitializeCoc()
+	call coc#util#install()
+	call coc#util#install_extensions([
+				\ 'coc-json',
+				\ 'coc-pyright',
+				\ 'coc-clangd',
+				\ 'coc-docker',
+				\ 'coc-jedi',
+				\ 'coc-tsserver',
+				\ 'coc-html',
+				\ 'coc-prettier',
+				\ 'coc-css',
+				\ 'coc-yaml',
+				\ 'coc-highlight',
+				\ 'coc-angular'
+				\ ])
+endfunction
 
 "--------------------------------------------Plugin 시작
 
@@ -45,7 +64,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'nvie/vim-flake8' " python 문법 검사
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release','do':{ -> InitializeCoc() }}
 Plug 'puremourning/vimspector'
 
 
@@ -78,8 +97,12 @@ let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 
 
 " color setting
-colorscheme dracula
-let g:dracula_colorterm = 0
+try
+	colorscheme dracula
+	let g:dracula_colorterm = 0
+finally
+	echo "no dracula"
+endtry
 
 let g:floaterm_width= get(g:, 'floaterm_width', 0.8)
 let g:floaterm_height= get(g:, 'floaterm_height', 0.9)
