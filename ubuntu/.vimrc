@@ -81,6 +81,9 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'SirVer/ultisnips'
 
+Plug 'azabiong/vim-highlighter'
+
+Plug 'sheerun/vim-polyglot'
 
 
 call plug#end()
@@ -144,16 +147,17 @@ nmap <Leader>rc :rightbelow vnew $MYVIMRC<CR>
 nmap <C-F> :NERDTreeFind<CR>
 nmap <Leader>nerd :NERDTreeToggle<CR>
 
-nnoremap   <silent>   <C-O>   :FloatermToggle<CR>
-tnoremap   <silent>   <C-O>   <C-\><C-n>:FloatermToggle<CR>
+nnoremap   <silent>   <C-i>   :FloatermToggle<CR>
+tnoremap   <silent>   <C-i>   <C-\><C-n>:FloatermToggle<CR>
 
 vnoremap <S-Q> <Nop>
 nnoremap <S-Q> <Nop>
 
 " coc setting
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gD <Plug>(coc-implementation)
+nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
 
 let g:UltiSnipsExpandTrigger = "<nop>"
 
@@ -192,3 +196,8 @@ endfunction
 au BufEnter /* call LoadCscope()
 " set asterick
 map *   <Plug>(asterisk-*)
+
+" highlight
+
+highlight an1 cterm=none ctermfg=233 ctermbg=147
+syntax match an1 /\v\/\/ A:.*$/
