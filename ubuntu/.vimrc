@@ -20,12 +20,6 @@ set cmdheight=2
 
 set backspace=indent,eol,start
 
-" set python3 setting
-set pythondll=/Library/Frameworks/Python.framework/Versions/3.12/Python
-set pythonhome=/Library/Frameworks/Python.framework/Versions/3.12
-set pythonthreedll=/Library/Frameworks/Python.framework/Versions/3.12/Python
-set pythonthreehome=/Library/Frameworks/Python.framework/Versions/3.12
-
 
 
 function! InitializeCoc()
