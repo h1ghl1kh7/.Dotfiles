@@ -20,8 +20,6 @@ set cmdheight=2
 
 set backspace=indent,eol,start
 
-
-
 function! InitializeCoc()
 	call coc#util#install()
 	call coc#util#install_extensions([
@@ -192,6 +190,9 @@ au BufEnter /* call LoadCscope()
 map *   <Plug>(asterisk-*)
 
 " highlight
+augroup MyHighlight
+  autocmd!
+  autocmd BufNewFile,BufRead * highlight an1 ctermfg=233 ctermbg=147
+  autocmd BufNewFile,BufRead * syntax match an1 /\v\/\/ A:.*$/
+augroup END
 
-highlight an1 cterm=none ctermfg=233 ctermbg=147
-syntax match an1 /\v\/\/ A:.*$/
