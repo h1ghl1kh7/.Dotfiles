@@ -177,3 +177,7 @@ augroup MyHighlight
   autocmd BufNewFile,BufRead * syntax match an1 /\v\/\/ A:.*$/
 augroup END
 
+
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tn  :tabnew<CR>
