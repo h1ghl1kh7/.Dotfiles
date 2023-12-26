@@ -20,23 +20,12 @@ set cmdheight=2
 
 set backspace=indent,eol,start
 
-function! InitializeCoc()
-	call coc#util#install()
-	call coc#util#install_extensions([
-				\ 'coc-json',
-				\ 'coc-pyright',
-				\ 'coc-clangd',
-				\ 'coc-docker',
-				\ 'coc-jedi',
-				\ 'coc-tsserver',
-				\ 'coc-html',
-				\ 'coc-prettier',
-				\ 'coc-css',
-				\ 'coc-yaml',
-				\ 'coc-highlight',
-				\ 'coc-angular'
-				\ ])
-endfunction
+" set python3 setting
+set pythondll=/Library/Frameworks/Python.framework/Versions/3.12/Python
+set pythonhome=/Library/Frameworks/Python.framework/Versions/3.12
+set pythonthreedll=/Library/Frameworks/Python.framework/Versions/3.12/Python
+set pythonthreehome=/Library/Frameworks/Python.framework/Versions/3.12
+
 
 "--------------------------------------------Plugin 시작
 
@@ -58,7 +47,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'nvie/vim-flake8' " python 문법 검사
-Plug 'neoclide/coc.nvim', {'branch': 'release','do':{ -> InitializeCoc() }}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 Plug 'puremourning/vimspector'
 
 
@@ -85,11 +75,7 @@ call plug#end()
 "--------------------------------------------- vim 기본 설정
 
 " ultisnips
-" let g:UltiSnipsExpandTrigger="<Tab>"
-" let g:UltiSnipsJumpForwardTrigger="<Tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 let g:UltiSnipsEditSplit="vertical"
-" let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips']
 let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 
 try
@@ -98,7 +84,9 @@ catch /^Vim\%((\a\+)\)\=:E185/
 	" deal with it
 endtry
 
-let g:floaterm_width= get(g:, 'floaterm_width', 0.8)
+
+
+let g:floaterm_width= get(g:, 'floaterm_width', 0.9)
 let g:floaterm_height= get(g:, 'floaterm_height', 0.9)
 
 let mapleader=","
@@ -139,8 +127,8 @@ nmap <Leader>rc :rightbelow vnew $MYVIMRC<CR>
 nmap <C-F> :NERDTreeFind<CR>
 nmap <Leader>nerd :NERDTreeToggle<CR>
 
-nnoremap   <silent>   <C-i>   :FloatermToggle<CR>
-tnoremap   <silent>   <C-i>   <C-\><C-n>:FloatermToggle<CR>
+nnoremap   <silent>   <s-h>   :FloatermToggle<CR>
+tnoremap   <silent>   <s-h>   <C-\><C-n>:FloatermToggle<CR>
 
 vnoremap <S-Q> <Nop>
 nnoremap <S-Q> <Nop>
