@@ -26,3 +26,4 @@ cp .zshrc ~/
 cp .tmux.conf ~/
 mkdir -p ~/.vim/UltiSnips
 cp ./snippets/* ~/.vim/UltiSnips/
+cp ./coc-settings.json ~/.vim/
