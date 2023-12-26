@@ -119,3 +119,4 @@ alias cmd.exe=/mnt/c/Windows/System32/cmd.exe
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export LS_COLORS=$LS_COLORS:'ow=36:'
+export SHELL=$(which zsh)
