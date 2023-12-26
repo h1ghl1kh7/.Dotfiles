@@ -1,0 +1,22 @@
+snippet pwn "pwntools snippet" b
+from pwn import *
+
+context.log_level=1
+context.terminal = ['tmux','splitw','-h']
+
+target='$1'
+p=gdb.debug(target,gdbscript='''''')
+e=ELF(target)
+libc=ELF('$2')
+
+sla = lambda x, y : p.sendlineafter(x, y)
+sa = lambda x, y : p.sendafter(x, y)
+sl = lambda x : p.sendline(x)
+s = lambda x : p.send(x)
+rvu = lambda x : p.recvuntil(x)
+rv = lambda x : p.recv(x)
+rvl = lambda : p.recvline()
+li = lambda x:log.info(hex(x))
+endsnippet
+
+

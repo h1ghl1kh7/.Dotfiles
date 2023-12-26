@@ -24,3 +24,5 @@ cp .init.vim ~/.config/nvim/init.vim
 cp .vimrc ~/
 cp .zshrc ~/
 cp .tmux.conf ~/
+mkdir -p ~/.vim/UltiSnips
+cp ./snippets/* ~/.vim/UltiSnips/
