@@ -120,3 +120,5 @@ alias cmd.exe=/mnt/c/Windows/System32/cmd.exe
 
 export LS_COLORS=$LS_COLORS:'ow=36:'
 export SHELL=$(which zsh)
+
+alias vim=nvim
