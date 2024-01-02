@@ -119,6 +119,7 @@ nmap <Leader>rc :rightbelow vnew $MYVIMRC<CR>
 " nerdtre setting
 nmap <C-F> :NERDTreeFind<CR>
 nmap <Leader>nerd :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 nnoremap   <silent>   <s-h>   :FloatermToggle<CR>
 tnoremap   <silent>   <s-h>   <C-\><C-n>:FloatermToggle<CR>
