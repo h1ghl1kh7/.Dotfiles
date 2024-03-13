@@ -1,3 +1,4 @@
+
 set nocompatible              " be iMproved, required
 filetype plugin indent on     
 
@@ -12,7 +13,6 @@ set ignorecase
 
 
 set cursorcolumn
-
 set clipboard=unnamed
 set mouse=a
 
@@ -41,9 +41,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'nvie/vim-flake8' " python 문법 검사
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'joe-skb7/cscope-maps'
 Plug 'voldikss/vim-floaterm'
 
+Plug 'dhananjaylatkar/cscope_maps.nvim'
 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
@@ -54,15 +54,19 @@ Plug 'SirVer/ultisnips'
 
 Plug 'sheerun/vim-polyglot'
 
+Plug 'kevinhwang91/nvim-bqf'
+Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+
 call plug#end()
 
+lua require("cscope_maps").setup({})
 "---------------------------------------------Plugin 종료
 
 "--------------------------------------------- vim 기본 설정
 
 " ultisnips
 let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories = ['UltiSnips']
+let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/UltiSnips']
 
 try
 	colorscheme dracula
@@ -72,8 +76,8 @@ endtry
 
 
 
-let g:floaterm_width= get(g:, 'floaterm_width', 0.9)
-let g:floaterm_height= get(g:, 'floaterm_height', 0.9)
+let g:floaterm_width= get(g:, 'floaterm_width', 0.95)
+let g:floaterm_height= get(g:, 'floaterm_height', 0.95)
 
 let mapleader=","
 " line number
@@ -112,17 +116,27 @@ nmap <Leader>rc :rightbelow vnew $MYVIMRC<CR>
 " nerdtre setting
 nmap <C-F> :NERDTreeFind<CR>
 nmap <Leader>nerd :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
-nnoremap   <silent>   <s-h>   :FloatermToggle<CR>
-tnoremap   <silent>   <s-h>   <C-\><C-n>:FloatermToggle<CR>
+" floaterm setting
+nnoremap   <silent>   <c-s-h>   :FloatermToggle<CR>
+tnoremap   <silent>   <c-s-h>   <C-\><C-n>:FloatermToggle<CR>
+tnoremap   <silent>   <c-s-n>   <C-\><C-n>:FloatermNew<CR>
+tnoremap   <silent>   <c-s-j>   <C-\><C-n>:FloatermNext<CR>
+tnoremap   <silent>   <c-s-p>   <C-\><C-n>:FloatermNew python3<CR>
+let g:floaterm_shell="/bin/zsh"
+let g:floaterm_autoclose=2
+let g:floaterm_width= get(g:, 'floaterm_width', 0.95)
+let g:floaterm_height= get(g:, 'floaterm_height', 0.95)
+
 
 vnoremap <S-Q> <Nop>
 nnoremap <S-Q> <Nop>
 
-" coc setting
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" " coc setting
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 
 let g:coc_global_config="$HOME/.config/coc/coc-settings.json"
 
@@ -139,28 +153,18 @@ inoremap <silent><expr> <Tab>
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 
-
-
+" cscope_maps setting
+nnoremap <leader>g :execute 'Cscope find g '. expand('<cword>')<CR>
+nnoremap <leader>s :execute 'Cscope find s '. expand('<cword>')<CR>
+nnoremap <leader>c :execute 'Cscope find c '. expand('<cword>')<CR>
+nnoremap <leader>cb :execute 'Cscope build'<CR>
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
-:
 " open fzf
-nmap <C-P> :Files<CR>
+nmap <C-P> :FloatermNew fzf<CR>
 
 
-
-
-function! LoadCscope()
-  let db = findfile("cscope.out", ".;")
-  if (!empty(db))
-    let path = strpart(db, 0, match(db, "/cscope.out$"))
-    set nocscopeverbose " suppress 'duplicate connection' error
-    exe "cs add " . db . " " . path
-    set cscopeverbose
-  endif
-endfunction
-au BufEnter /* call LoadCscope()
 " set asterick
 map *   <Plug>(asterisk-*)
 
@@ -175,3 +179,9 @@ augroup END
 nnoremap tj  :tabnext<CR>
 nnoremap tk  :tabprev<CR>
 nnoremap tn  :tabnew<CR>
+
+" codeium
+let g:codeium_disable_bindings = 1
+imap <script><silent><nowait><expr> <s-space> codeium#Accept()
+
+
