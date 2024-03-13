@@ -1,6 +1,11 @@
 #!/bin/bash
 
 echo "[*] install zsh plugins & nvim"
+if ! command -v nvim &> /dev/null
+then
+	echo "nvim not found"
+	exit
+fi
 
 installer_path=$PWD
 
@@ -28,3 +33,6 @@ mkdir -p ~/.config/nvim/UltiSnips
 cp ./snippets/* ~/.config/nvim/UltiSnips/
 cp ./coc-settings.json ~/.vim/
 cp ./coc-settings.json ~/.config/nvim/
+
+nvim +PlugInstall +qall
+nvim +"CocInstall -sync coc-json coc-pyright coc-clangd coc-docker coc-jedi coc-tsserver coc-html coc-prettier coc-css coc-yaml coc-highlight coc-angular coc-snippets coc-marketplace coc-eslint coc-tabnine" +qall
