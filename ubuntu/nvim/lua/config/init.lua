@@ -1,3 +1,4 @@
+-- lua initialize
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -11,15 +12,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- loads config
 require("config.globals")
 require("config.keymaps")
 require("config.options")
 require("config.autocmds")
 
-
+-- lazy setup
 local plugins = "plugins"
 local opts = {}
-
 require("lazy").setup(plugins, opts)
 
 
