@@ -25,14 +25,9 @@ cd $installer_path
 
 cp .p10k.zsh ~/
 mkdir -p ~/.config/nvim/
-cp init.vim ~/.config/nvim/init.vim
-cp .vimrc ~/
+cp -r nvim/* ~/.config/nvim
 cp .zshrc ~/
 cp .tmux.conf ~/
-mkdir -p ~/.config/nvim/UltiSnips
-cp ./snippets/* ~/.config/nvim/UltiSnips/
-cp ./coc-settings.json ~/.vim/
-cp ./coc-settings.json ~/.config/nvim/
 
 nvim +PlugInstall +qall
-nvim +"CocInstall -sync coc-json coc-pyright coc-clangd coc-docker coc-jedi coc-tsserver coc-html coc-prettier coc-css coc-yaml coc-highlight coc-angular coc-snippets coc-marketplace coc-eslint coc-tabnine" +qall
+nvim +"CocInstall -sync coc-json coc-pyright coc-clangd coc-docker coc-jedi coc-tsserver coc-html coc-prettier coc-css coc-yaml coc-highlight coc-angular coc-snippets coc-marketplace coc-eslint" +qall
