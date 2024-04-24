@@ -1,5 +1,5 @@
-source ~/.Pwngdb/pwngdb.py
-source ~/.Pwngdb/angelheap/gdbinit.py
+source WORKDIR/Pwngdb/pwngdb.py
+source WORKDIR/Pwngdb/angelheap/gdbinit.py
 
 define hook-run
 python

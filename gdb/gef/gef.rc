@@ -25,7 +25,7 @@ max_recursion = 7
 entrypoint_symbols = main _main __libc_start_main __uClibc_main start _start
 
 [gef]
-pcustom.struct_path = ~/.gef-extras/structs
+pcustom.struct_path = WORKDIR/gef-extras/structs
 autosave_breakpoints_file = 
 bruteforce_main_arena = False
 buffer = True
@@ -63,7 +63,7 @@ length = 1024
 
 [pcustom]
 max_depth = 4
-struct_path = ~/.gef-extras/structs
+struct_path = WORKDIR/gef-extras/structs
 structure_name = bold blue
 structure_size = green
 structure_type = bold red
@@ -102,7 +102,7 @@ max_tracing_recursion = 1
 tracefile_prefix = ./gef-trace-
 
 [syscall-args]
-path = ~/.gef-extras/syscall_args/syscall-tables
+path = WORKDIR/gef-extras/syscall_args/syscall-tables
 
 [aliases]
 ctx = context
