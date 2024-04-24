@@ -1,0 +1,43 @@
+snippet pwn "pwntools snippet" b
+# Time     `!v strftime("%Y-%m-%d %H:%M:%S",localtime())`
+# Location  `!v expand("%:p:h")`
+
+from pwn import *
+
+
+def Exploit(chal_path, libc_path=None,nc_url=None):
+	e=ELF(chal_path)
+	libc=ELF(libc_path) if libc_path else None
+	env = {"LD_PRELOAD": libc_path} if libc_path else None
+	if (args.REMOTE):
+		nc_url = nc_url.split()
+		p=remote(nc_url[1],int(nc_url[2]))
+	elif (args.DEBUG):
+		context.terminal = ["tmux", "splitw", "-h"]
+		gdbscript="""
+
+		"""
+		p=debug(chal_path,gdbscript=gdbscript,env=env)
+	else:
+		p=process(chal_path,env=env)
+	return (p,e,libc) if libc_path else (p,e)
+
+	
+sla = lambda x, y : p.sendlineafter(x, y)
+sa  = lambda x, y : p.sendafter(x, y)
+sl  = lambda x    : p.sendline(x)
+s   = lambda x    : p.send(x)
+rvu = lambda x    : p.recvuntil(x)
+rv  = lambda x    : p.recv(x)
+rvl = lambda      : p.recvline()
+li  = lambda x    : log.info(hex(x))
+
+if __name__ == "__main__":
+	context(os='linux', arch='amd64', log_level='debug')
+	p,e=Exploit("$1")
+
+
+	p.interactive()
+
+
+endsnippet
