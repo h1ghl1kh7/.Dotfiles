@@ -3,7 +3,7 @@
 echo "[*] install zsh plugins & nvim"
 
 installer_path=$PWD
-installed_path="${home}/.config/dotfiles"
+installed_path="${HOME}/.config/dotfiles"
 
 usage() {
     echo "Usage: $0 install [-o install_path]"

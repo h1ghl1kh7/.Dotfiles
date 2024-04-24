@@ -3,7 +3,7 @@
 echo "GDB peda, pwndbg, gef integration"
 
 installer_path=$PWD
-installed_path="${home}/.config/dotfiles"
+installed_path="${HOME}/.config/dotfiles"
 
 usage() {
     echo "Usage: $0 [gdb | gef] [-o output_path]"
