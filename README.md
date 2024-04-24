@@ -1,26 +1,7 @@
-# TOOLS
+# My Dotfiles
 
-### *install the following lists at once*
+## Installation
+run `install/run.sh`
 
-- [GDB](#gdb_all)
-- [GEF](#gef)
-- [Ubuntu](#ubuntu)
-
-
-
-## GDB
-
-- gdb gef
-- gdb peda
-- gdb pwndbg
-
-## GEF
-
-- GEF
-- GEF-extra
-
-## Ubuntu
-
-- zsh
-- nvim
+## Other Settings
 - [docker-pwn](https://hub.docker.com/repository/docker/h1ghl1kh7/pwn/general)
