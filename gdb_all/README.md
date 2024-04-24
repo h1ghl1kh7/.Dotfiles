@@ -1,7 +1,13 @@
 # GDB
 
-*all files saved in* `/tools/`
+## Installation
+install all gdb [gef, peda, pwndbg]
+`run.sh`
+---
+install gef and additional parts
+`run_gef.sh`
 
-```
-./gdb_setting.sh
-```
+*save location*
+`/tools/`
+
+
