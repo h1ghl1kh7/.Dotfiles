@@ -1,9 +1,6 @@
 #!/bin/sh
 
-
-
 echo "[*]gdb peda+pwndbg+gef"
-
 
 installer_path=$PWD
 
@@ -60,9 +57,9 @@ cp gdbinit ~/.gdbinit
 
 {
   echo "[+] Creating files..."
-    sudo cp gdb-peda /usr/bin/gdb-peda &&\
-    sudo cp gdb-pwndbg /usr/bin/gdb-pwndbg &&\
-    sudo cp gdb-gef /usr/bin/gdb-gef
+    sudo cp bin/gdb-peda /usr/bin/gdb-peda &&\
+    sudo cp bin/gdb-pwndbg /usr/bin/gdb-pwndbg &&\
+    sudo cp bin/gdb-gef /usr/bin/gdb-gef
 } || {
   echo "[-] Permission denied"
     exit

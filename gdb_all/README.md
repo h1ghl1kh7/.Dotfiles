@@ -7,7 +7,7 @@ install all gdb [gef, peda, pwndbg]
 install gef and additional parts
 `run_gef.sh`
 
-*save location*
+*default tools location*
 `/tools/`
 
 
