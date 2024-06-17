@@ -16,34 +16,47 @@ etc.
 ```
 # file tree
 
-├── UltiSnips
-│   └── python.snippets
-├── coc-settings.json
 ├── init.lua
-└── lua
-    ├── config
-    │   ├── autocmds.lua
-    │   ├── globals.lua
-    │   ├── init.lua
-    │   ├── keymaps.lua
-    │   └── options.lua
-    ├── plugins
-    │   ├── aerial.lua
-    │   ├── coc.lua
-    │   ├── colorscheme.lua
-    │   ├── comment.lua
-    │   ├── indent-blankline.lua
-    │   ├── lualine.lua
-    │   ├── neo-tree.lua
-    │   ├── nvim-autopairs.lua
-    │   ├── nvim-treesitter.lua
-    │   ├── telescope.lua
-    │   └── vim-floaterm.lua
-    └── utils
-        └── keyMapper.lua
+├── lua
+│   ├── config
+│   │   ├── autocmds.lua
+│   │   ├── globals.lua
+│   │   ├── init.lua
+│   │   ├── keymaps.lua
+│   │   └── options.lua
+│   ├── plugins
+│   │   ├── aerial.lua
+│   │   ├── alpha-nvim.lua
+│   │   ├── codeium.lua
+│   │   ├── colorscheme.lua
+│   │   ├── comment.lua
+│   │   ├── conform.lua
+│   │   ├── indent-blankline.lua
+│   │   ├── lsp.lua
+│   │   ├── lualine.lua
+│   │   ├── luasnip.lua
+│   │   ├── molten.lua
+│   │   ├── multicursors.lua
+│   │   ├── neo-tree.lua
+│   │   ├── nvim-autopairs.lua
+│   │   ├── nvim-cmp.lua
+│   │   ├── nvim-treesitter.lua
+│   │   ├── nvim-ufo.lua
+│   │   ├── nvimesweeper.lua
+│   │   ├── telescope.lua
+│   │   ├── trouble.lua
+│   │   ├── vim-floaterm.lua
+│   │   └── wezterm.lua
+│   └── utils
+│       └── keyMapper.lua
+└── snippets
+    ├── markdown.json
+    ├── package.json
+    └── python.json
 
-5 directories, 20 files 
+6 directories, 33 files
 ```
+
 In the top-level init.vim, the config is loaded. Through this, the init.vim file in lua/config is loaded.
 
 What's written under loads config in globals/keymaps/options/autocmds each serve the following roles:
