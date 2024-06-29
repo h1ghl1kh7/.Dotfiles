@@ -46,8 +46,8 @@ git clone https://github.com/jeffreytse/zsh-vi-mode ${ZSH_CUSTOM:-~/.oh-my-zsh/c
 
 cd $installer_path
 
-cp config/p10k.zsh ~/
+cp config/p10k.zsh ~/.p10k.zsh
 mkdir -p ~/.config/nvim/
 cp -r config/nvim/* ~/.config/nvim
-cp config/zshrc ~/
-cp config/tmux.conf ~/
+cp config/zshrc ~/.zshrc
+cp config/tmux.conf ~/.tmux.conf
