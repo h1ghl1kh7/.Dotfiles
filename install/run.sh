@@ -31,11 +31,11 @@ if [ ! -d "$installed_path" ]; then
     mkdir -p "$installed_path"
 fi
 
-if ! command -v nvim &> /dev/null
-then
-	echo "nvim not found"
-	exit 1
-fi
+# if ! command -v nvim &> /dev/null
+# then
+# 	echo "nvim not found"
+# 	exit 1
+# fi
 
 
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
