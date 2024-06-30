@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-echo "[*] install zsh plugins & nvim"
+echo "[*] install zsh plugins"
 
 installer_path=$PWD
 installed_path="${HOME}/.config/dotfiles"
@@ -31,13 +31,6 @@ if [ ! -d "$installed_path" ]; then
     mkdir -p "$installed_path"
 fi
 
-# if ! command -v nvim &> /dev/null
-# then
-# 	echo "nvim not found"
-# 	exit 1
-# fi
-
-
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -47,10 +40,6 @@ git clone https://github.com/jeffreytse/zsh-vi-mode ${ZSH_CUSTOM:-~/.oh-my-zsh/c
 cd $installer_path
 
 cp config/p10k.zsh ~/.p10k.zsh
-mkdir -p ~/.config/nvim/
-cp -r config/nvim/* ~/.config/nvim
+cp config/vimrc ~/.vimrc
 cp config/zshrc ~/.zshrc
 cp config/tmux.conf ~/.tmux.conf
-
-echo "alias vim=nvim" >> ~/.zshrc
-echo "alias v=nvim" >> ~/.zshrc
