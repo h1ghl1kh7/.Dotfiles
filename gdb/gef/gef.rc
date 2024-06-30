@@ -17,6 +17,8 @@ show_opcodes_size = 0
 show_registers_raw = False
 show_source_code_variable_values = True
 show_stack_raw = False
+libc_args = True
+libc_args_path = WORKDIR/gef-extras/glibc-function-args
 
 [dereference]
 max_recursion = 7
@@ -31,7 +33,7 @@ bruteforce_main_arena = False
 buffer = True
 debug = False
 disable_color = False
-extra_plugins_dir = 
+extra_plugins_dir = WORKDIR/gef-extras/scripts
 follow_child = True
 main_arena_offset = 
 readline_compat = False
