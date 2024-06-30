@@ -14,8 +14,6 @@ set smartcase
 " Visual settings
 set number
 set relativenumber
-set termguicolors
-set signcolumn=yes
 
 " Miscellaneous settings
 set encoding=utf-8
