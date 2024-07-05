@@ -1,12 +1,13 @@
 return {
 	"mg979/vim-visual-multi",
 	branch = "master",
-	event = "VeryLazy",
+  event = "BufReadPost",
 	init = function()
+    vim.g["VM_default_mappings"] = 0
 		vim.g.VM_maps = {
-			["Find Under"] = "<C-d>",
-			["Add Cursor Down"] = "<C-j>",
-			["Add Cursor Up"] = "<C-k>",
+			["Find Under"] = "<C-n>",
+      ["Add Cursor Down"] = "<C-j>",
+      ["Add Cursor Up"] = "<C-k>"
 		}
 	end,
 }

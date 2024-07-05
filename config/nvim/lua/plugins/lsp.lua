@@ -28,6 +28,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
+        automatic_installation = true,
 				ensure_installed = servers,
 			})
 		end,
@@ -41,6 +42,7 @@ return {
 			end
 
 			keyMapper("K", vim.lsp.buf.hover)
+			keyMapper("<leader>r", vim.lsp.buf.rename)
 			keyMapper("<leader>ca", vim.lsp.buf.code_action)
 
 			vim.lsp.handlers["textDocument/publishDiagnostics"] =
