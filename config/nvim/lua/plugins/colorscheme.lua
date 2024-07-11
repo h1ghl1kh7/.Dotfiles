@@ -3,11 +3,15 @@ return {
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
-	},
-	{
-		"LazyVim/LazyVim",
-		opts = {
-			colorscheme = "tokyonight-night",
-		},
+		opts = {},
+    config = function()
+      require("tokyonight").setup({
+        transparent = true,
+        styles = {
+          sidebar = "transparent",
+          float = "transparent"
+        }
+      })
+    end
 	},
 }

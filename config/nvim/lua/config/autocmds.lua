@@ -1,3 +1,4 @@
+
 -- sync with system clipboard on focus
 vim.api.nvim_create_autocmd({ "FocusGained" }, {
 	pattern = { "*" },
@@ -17,12 +18,15 @@ vim.api.nvim_exec(
 	false
 )
 
+vim.api.nvim_exec(
+	[[
+  autocmd TermOpen * tnoremap <buffer> <C-k> <C-k>
+]],
+	false
+)
 
-
-vim.api.nvim_create_augroup("filetypedetect", { clear = true })
-
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-  pattern = {"*.sage", "*.spyx", "*.pyx"},
-  command = "setfiletype python",
-  group = "filetypedetect",
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*.sage", "*.spyx", "*.pyx" },
+	command = "setfiletype python",
+	group = "filetypedetect",
 })

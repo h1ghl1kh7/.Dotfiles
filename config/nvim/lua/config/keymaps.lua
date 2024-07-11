@@ -1,14 +1,39 @@
+local keymap = vim.keymap
 local mapKey = require("utils.keyMapper").mapKey
+local opts = { noremap = true, silent = true }
 
--- Neotree toggle
-mapKey("<c-f>", ":Neotree toggle<cr>")
+-- Increment/decrement
+keymap.set("n", "+", "<C-a>")
+keymap.set("n", "-", "<C-x>")
+
+-- Save with root permission (not working for now)
+--vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
+
+-- New tab
+keymap.set("n", "te", ":tabedit")
+keymap.set("n", "<tab>", ":tabnext<Return>", opts)
+keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+-- Split window
+keymap.set("n", "ss", ":split<Return>", opts)
+keymap.set("n", "sv", ":vsplit<Return>", opts)
+-- Move window
+keymap.set("n", "sh", "<C-w>h")
+keymap.set("n", "sk", "<C-w>k")
+keymap.set("n", "sj", "<C-w>j")
+keymap.set("n", "sl", "<C-w>l")
+
+-- Diagnostics
+keymap.set("n", "<C-j>", function()
+	vim.diagnostic.goto_next()
+end, opts)
+
 mapKey("<c-p>", ":Neotree focus<cr>")
+
 mapKey("<S-A-h>", ":FloatermToggle<CR>", "n")
 mapKey("<S-A-h>", "<C-\\><C-n>:FloatermToggle<CR>", "t")
 mapKey("<S-A-n>", "<C-\\><C-n>:FloatermNew<CR>", "t")
 mapKey("<S-A-j>", "<C-\\><C-n>:FloatermNext<CR>", "t")
 mapKey("<S-A-p>", "<C-\\><C-n>:FloatermNew python3<CR>", "t")
-
 
 mapKey("<localleader>e", ":<C-u>MoltenEvaluateVisual<CR>gv", "v")
 mapKey("<localleader>i", ":MoltenInit<CR>")
@@ -18,28 +43,11 @@ mapKey("<localleader>c", ":MoltenInterrupt<CR>")
 mapKey("<localleader>d", ":MoltenDelete<CR>")
 mapKey("<localleader>o", ":noautocmd MoltenEnterOutput<CR>")
 
-mapKey("<leader>tn",":BufferNext<CR>")
-mapKey("<leader>tp",":BufferPrev<CR>")
-mapKey("<leader>tf",":BufferPick<CR>")
-mapKey("<leader>tc",":BufferClose<CR>")
-
-mapKey("<leader>t1",":BufferGoto 1<CR>")
-mapKey("<leader>t2",":BufferGoto 2<CR>")
-mapKey("<leader>t3",":BufferGoto 3<CR>")
-mapKey("<leader>t4",":BufferGoto 4<CR>")
-mapKey("<leader>t5",":BufferGoto 5<CR>")
-mapKey("<leader>t6",":BufferGoto 6<CR>")
-mapKey("<leader>t7",":BufferGoto 7<CR>")
-mapKey("<leader>t8",":BufferGoto 8<CR>")
-mapKey("<leader>t9",":BufferGoto 9<CR>")
 mapKey("<C-q>", "@q")
 
+mapKey("<S-A-l>", ":SimpleNoteList<CR>")
+mapKey("<S-A-c>", ":SimpleNoteCreate<CR>")
 
-mapKey("<leader>c.",":cd %:h<CR>")
+mapKey("<C-W>m", ":WinShift<CR>")
 
-vim.api.nvim_exec(
-	[[
-  autocmd TermOpen * tnoremap <buffer> <C-l> <C-l>
-]],
-	false
-)
+mapKey("<leader>c.", ":cd %:h<CR>")
